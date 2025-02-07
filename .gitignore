@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Hajozas Sim/.vs
+/Hajozas Sim/Hajozas Sim/obj
+/Hajozas Sim/Hajozas Sim/bin/Debug/net8.0
