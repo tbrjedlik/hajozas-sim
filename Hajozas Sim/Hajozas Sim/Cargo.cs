@@ -12,9 +12,9 @@ namespace Hajozas_Sim
         public string CargoType { get; set; }
         public double Weight { get; set; }
         public double Volume { get; set; }
-        public string Destination { get; set; }
+        public Harbor Destination { get; set; }
 
-        public Cargo(string cargoId, string cargoType, double weight, double volume, string destination)
+        public Cargo(string cargoId, string cargoType, double weight, double volume, Harbor destination)
         {
             CargoId = cargoId;
             CargoType = cargoType;
