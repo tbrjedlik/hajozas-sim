@@ -16,10 +16,5 @@ namespace Hajozas_Sim
             Armament = armament;
         }
 
-        public void DefendAgainstPirates()
-        {
-            
-        }
-
     }
 }
