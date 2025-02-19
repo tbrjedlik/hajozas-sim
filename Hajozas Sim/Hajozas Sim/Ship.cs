@@ -24,16 +24,22 @@ namespace Hajozas_Sim
             CurrentStatus = "Docked";
             CurrentPosition = (0, 0);
         }
+        public void Dock(Harbor harbor)
+        {
+            if (harbor == null)
+                throw new ArgumentNullException(nameof(harbor), "A kikötő nem lehet null.");
 
-        public void Depart()
-        {
-            CurrentStatus = "Sailing";
-        }
-        public void Arrive()
-        {
-            CurrentStatus = "Docked";
+            harbor.DockShip(this);
         }
 
-        //public abstract void DisplayInfo();
+        public void Undock(Harbor harbor)
+        {
+            if (harbor == null)
+                throw new ArgumentNullException(nameof(harbor), "A kikötő nem lehet null.");
+
+            harbor.UndockShip(this);
+        }
+
+
     }
 }

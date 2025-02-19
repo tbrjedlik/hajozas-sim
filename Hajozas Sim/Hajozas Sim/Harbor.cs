@@ -19,6 +19,34 @@
             Capacity = capacity;
             Position = position;
         }
+
+        public void DockShip(Ship ship)
+        {
+            if (ship == null)
+                throw new ArgumentNullException(nameof(ship), "A hajó nem lehet null.");
+
+            if (DockedShips.Contains(ship))
+                throw new InvalidOperationException("A hajó már dokkolva van ebben a kikötőben.");
+
+            if (DockedShips.Count >= Capacity)
+                throw new InvalidOperationException("A kikötő elérte a maximális kapacitását.");
+
+            DockedShips.Add(ship);
+            ship.CurrentStatus = "Docked";
+            ship.CurrentPosition = Position;
+        }
+
+        public void UndockShip(Ship ship)
+        {
+            if (ship == null)
+                throw new ArgumentNullException(nameof(ship), "A hajó nem lehet null.");
+
+            if (!DockedShips.Contains(ship))
+                throw new InvalidOperationException("A hajó nincs dokkolva ebben a kikötőben.");
+
+            DockedShips.Remove(ship);
+            ship.CurrentStatus = "Sailing";
+        }
     }
 
 }
