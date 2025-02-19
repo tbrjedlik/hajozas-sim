@@ -14,12 +14,14 @@ namespace Hajozas_Sim
 
         static void Main()
         {
-            MainMenu();
+            Menu();
         }
 
-        static void MainMenu()
+        static void Menu()
         {
-            while (true)
+            bool menu = true;
+
+            do
             {
                 Console.Clear();
                 Console.WriteLine("==== Hajózási Szimuláció ====");
@@ -51,13 +53,14 @@ namespace Hajozas_Sim
                         StartSimulation();
                         break;
                     case "0":
-                        return;
+                        menu = false;
+                        break;
                     default:
                         Console.WriteLine("Érvénytelen választás! Nyomj Entert a folytatáshoz...");
                         Console.ReadLine();
                         break;
                 }
-            }
+            } while (menu);
         }
 
         static void AddHarbor()
