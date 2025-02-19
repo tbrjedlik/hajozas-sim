@@ -19,13 +19,24 @@ namespace Hajozas_Sim
         public void LoadCargo(Cargo cargo, Harbor harbor)
         {
             if (cargo == null)
-                throw new ArgumentNullException(nameof(cargo), "A rakomány nem lehet null.");
+            {
+                throw new ArgumentNullException(nameof(cargo), "A rakomány nem lehet null."); 
+            }
 
             if (harbor == null)
+            {
                 throw new ArgumentNullException(nameof(harbor), "A kikötő nem lehet null.");
+            }
 
             if (!harbor.CargoList.Contains(cargo))
+            {
                 throw new InvalidOperationException("A rakomány nincs a kikötőben.");
+            }
+
+            if (harbor == cargo.Destination)
+            {
+                throw new InvalidOperationException("Ez a rakomány a célállomásán van.");
+            }
 
             double totalCargoWeight = 0;
             foreach (var cargoItem in ShipCargo)

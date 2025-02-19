@@ -42,6 +42,33 @@ namespace Hajozas_Sim
             CurrentStatus = "Sailing";
         }
 
+        public async Task MoveRouteAsync(Route route)
+        {
+            if (!(route.HarborA.DockedShips.Contains(this) || route.HarborB.DockedShips.Contains(this)))
+            {
+                throw new InvalidOperationException("A hajó nem dokkolt a kezdő- vagy a végpont kikötőjében.");
+            }
+
+            if (route.HarborA.DockedShips.Contains(this))
+            {
+                this.Undock(route.HarborA);
+
+                int delayTime = (int)((route.Distance) / (Speed) * 1000);
+                await Task.Delay(delayTime);
+
+                this.Dock(route.HarborB);
+            }
+            else
+            {
+                this.Undock(route.HarborB);
+
+                int delayTime = (int)((route.Distance) / (Speed) * 1000);
+                await Task.Delay(delayTime);
+
+                this.Dock(route.HarborA);
+            }
+        }
+
 
     }
 }
