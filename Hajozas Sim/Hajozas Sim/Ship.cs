@@ -30,6 +30,7 @@ namespace Hajozas_Sim
                 throw new ArgumentNullException(nameof(harbor), "A kikötő nem lehet null.");
 
             harbor.DockShip(this);
+            CurrentStatus = "Docked";
         }
 
         public void Undock(Harbor harbor)
@@ -38,6 +39,7 @@ namespace Hajozas_Sim
                 throw new ArgumentNullException(nameof(harbor), "A kikötő nem lehet null.");
 
             harbor.UndockShip(this);
+            CurrentStatus = "Sailing";
         }
 
 

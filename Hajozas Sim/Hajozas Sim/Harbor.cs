@@ -4,11 +4,12 @@
     {
         public string Name { get; set; }
         public int Capacity { get; set; }
+        public double CargoCapacity { get; set; }
         public (double x, double y) Position { get; set; }
         public List<Cargo> CargoList { get; set; } = new List<Cargo>();
         public List<Ship> DockedShips { get; set; } = new List<Ship>();
 
-        public Harbor(string name, int capacity, (double x, double y) position)
+        public Harbor(string name, int capacity, double cargoCapacity, (double x, double y) position)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("A kikötő neve nem lehet üres.");
@@ -17,6 +18,7 @@
 
             Name = name;
             Capacity = capacity;
+            CargoCapacity = cargoCapacity;
             Position = position;
         }
 
@@ -32,7 +34,6 @@
                 throw new InvalidOperationException("A kikötő elérte a maximális kapacitását.");
 
             DockedShips.Add(ship);
-            ship.CurrentStatus = "Docked";
             ship.CurrentPosition = Position;
         }
 
@@ -45,7 +46,6 @@
                 throw new InvalidOperationException("A hajó nincs dokkolva ebben a kikötőben.");
 
             DockedShips.Remove(ship);
-            ship.CurrentStatus = "Sailing";
         }
     }
 
